@@ -12,7 +12,7 @@ function App() {
   };
   return (
     <div className="w-full h-full bg-pink-300 flex items-center justify-center">
-      <div className="bg-white w-[80%] p-6 flex flex-col gap-8 items-center justify-start rounded-md bg-opacity-60">
+      <div className="bg-white max-w-sm w-[95%] p-6 flex flex-col gap-8 items-center justify-start rounded-md bg-opacity-60">
         <div className="flex items-center justify-center">
           <Button
             text="Sign in"

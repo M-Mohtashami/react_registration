@@ -1,13 +1,32 @@
 import Input from './Input';
 import Button from './Button';
 import { useState } from 'react';
+import { FormType } from '../Interfaces/Interfaces';
 
 interface Props {
   handelValidation: (value: HTMLFormElement) => void;
 }
+const initForm: FormType = {
+  email: {
+    isValid: true,
+    inputValue: '',
+  },
+  userName: {
+    isValid: true,
+    inputValue: '',
+  },
+  password: {
+    isValid: true,
+    inputValue: '',
+  },
+  confirmPassword: {
+    isValid: true,
+    inputValue: '',
+  },
+};
 
 export default function Form({ handelValidation }: Props) {
-  const [checkForm, setCheckForm] = useState();
+  const [checkForm, setCheckForm] = useState<FormType>(initForm);
   return (
     <form
       className="flex flex-col gap-4"
@@ -20,7 +39,8 @@ export default function Form({ handelValidation }: Props) {
         type="email"
         name="email"
         placeholder="Email"
-        isValid={false}
+        value={checkForm.email.inputValue}
+        isValid={checkForm.email.isValid}
         icon="mail-outline"
         errorText="email error"
       />
@@ -28,7 +48,8 @@ export default function Form({ handelValidation }: Props) {
         type="text"
         name="userName"
         placeholder="user name"
-        isValid={false}
+        value={checkForm.userName.inputValue}
+        isValid={checkForm.userName.isValid}
         icon="people-outline"
         errorText="user name is requiered"
       />
@@ -36,7 +57,8 @@ export default function Form({ handelValidation }: Props) {
         type="password"
         name="password"
         placeholder="password"
-        isValid={false}
+        value={checkForm.password.inputValue}
+        isValid={checkForm.password.isValid}
         icon="lock-closed-outline"
         errorText="password is not valid"
       />
@@ -44,7 +66,8 @@ export default function Form({ handelValidation }: Props) {
         type="password"
         name="confirmPassword"
         placeholder="password"
-        isValid={false}
+        value={checkForm.confirmPassword.inputValue}
+        isValid={checkForm.confirmPassword.isValid}
         icon="checkmark-circle-outline"
         errorText="confirm password is not mached"
       />

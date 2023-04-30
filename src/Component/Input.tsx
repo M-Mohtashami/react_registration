@@ -10,6 +10,7 @@ interface Props {
     | 'lock-closed-outline'
     | 'checkmark-circle-outline';
   errorText: string;
+  value: string;
   isValid: boolean;
 }
 export default function Input({
@@ -18,6 +19,7 @@ export default function Input({
   placeholder,
   icon,
   errorText,
+  value,
   isValid,
 }: Props) {
   // const [isValid, setIsValid] = useState<boolean>(true);
@@ -31,6 +33,7 @@ export default function Input({
         <input
           type={type}
           name={name}
+          value={value}
           placeholder={placeholder}
           className={`focus:outline-none`}
         />
