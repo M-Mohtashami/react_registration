@@ -1,5 +1,6 @@
 import IonIcon from '@reacticons/ionicons';
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
+import { InputType } from '../Interfaces/Interfaces';
 interface Props {
   type: string;
   name: string;
@@ -12,6 +13,7 @@ interface Props {
   errorText: string;
   value: string;
   isValid: boolean;
+  handelInput: (val: InputType) => void;
 }
 export default function Input({
   type,
@@ -21,6 +23,7 @@ export default function Input({
   errorText,
   value,
   isValid,
+  handelInput,
 }: Props) {
   // const [isValid, setIsValid] = useState<boolean>(true);
   return (
@@ -33,9 +36,13 @@ export default function Input({
         <input
           type={type}
           name={name}
-          value={value}
+          // value={value}
           placeholder={placeholder}
           className={`focus:outline-none`}
+          onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
+            // console.log(name, value);
+            handelInput({ key: name, value: e.target.value });
+          }}
         />
         <IonIcon
           name={icon}

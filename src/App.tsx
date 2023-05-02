@@ -3,12 +3,9 @@ import Button from './Component/Button';
 import Form from './Component/Form';
 
 function App() {
-  const [isActive, setIsActive] = useState(false);
-  const handelAcivation = (active: boolean) => {
+  const [isActive, setIsActive] = useState<boolean>(false);
+  const handelActivation = (active: boolean) => {
     active ? setIsActive(isActive) : setIsActive(!isActive);
-  };
-  const handelValidation = (form: HTMLFormElement) => {
-    console.log(Object.fromEntries(new FormData(form)));
   };
   return (
     <div className="w-full h-full bg-pink-300 flex items-center justify-center">
@@ -17,15 +14,15 @@ function App() {
           <Button
             text="Sign in"
             isActive={isActive}
-            handelAcivation={handelAcivation}
+            handelActivation={handelActivation}
           />
           <Button
             text="Sign up"
             isActive={!isActive}
-            handelAcivation={handelAcivation}
+            handelActivation={handelActivation}
           />
         </div>
-        {isActive ? null : <Form handelValidation={handelValidation} />}
+        {isActive ? null : <Form />}
       </div>
     </div>
   );

@@ -3,9 +3,9 @@ import React from 'react';
 interface Props {
   text: string;
   isActive: boolean;
-  handelAcivation: (value: boolean) => void;
+  handelActivation?: (value: boolean) => void;
 }
-export default function Button({ text, isActive, handelAcivation }: Props) {
+export default function Button({ text, isActive, handelActivation }: Props) {
   let classes: string;
   isActive
     ? (classes =
@@ -13,7 +13,7 @@ export default function Button({ text, isActive, handelAcivation }: Props) {
     : (classes = 'text-purple-700 px-4 py-1 text-center');
   return (
     <div>
-      <button className={classes} onClick={() => handelAcivation(isActive)}>
+      <button className={classes} onClick={() => handelActivation!(isActive)}>
         {text}
       </button>
     </div>
